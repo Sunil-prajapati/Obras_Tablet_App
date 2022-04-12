@@ -1,0 +1,31 @@
+
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
+platform :ios, '11.0'
+
+target 'ObrasTabletApp' do
+  config = use_native_modules!
+
+  use_react_native!(:path => config["reactNativePath"])
+
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
+  target 'ObrasTabletAppTests' do
+    inherit! :complete
+    # Pods for testing
+    pod 'Firebase'
+    pod 'Firebase/InAppMessaging'
+    pod 'Firebase/Analytics'
+  end
+
+end
+
+target 'ObrasTabletApp-tvOS' do
+  # Pods for ObrasTabletApp-tvOS
+
+  target 'ObrasTabletApp-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+end
